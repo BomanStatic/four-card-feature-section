@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+:root {
+    /* Primary Colors */
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+
+    /* Neutral Colors */
+    --very-dark-blue: hsl(234, 12%, 24%);
+    --grayish-blue: hsl(229, 6%, 66%);
+    --very-light-gray: hsl(0, 0%, 98%);
+
+    /* Font */
+    --font-size: 15px;
+    --font-family: "Poppins", sans-serif;
+
+    /*Misc */
+    --border-radius: 0.5rem;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body,
+html {
+    height: 100%;
+}
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--very-dark-blue);
+    line-height: 1.5;
+}
+main {
+    width: min(calc(100% - 2rem), 74rem);
+    margin-inline: auto;
+    container-type: inline-size;
+}
+header {
+    text-align: center;
+    width: min(calc(100%), 34rem);
+    margin-inline: auto;
+    margin-block: 3rem;
+}
+header > p {
+    margin-top: 1rem;
+}
+h1,
+h2 {
+    font-size: clamp(1.7rem, 5vw, 2.5rem);
+}
+h1 {
+    font-weight: 200;
+}
+p {
+    color: var(--grayish-blue);
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.card {
+    --_line-color: var(--red, red);
+
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: grid;
+    gap: 0.5rem;
+}
+.card > h3 {
+    font-size: 1.4rem;
+}
+.card > p {
+    line-height: 1.7;
+}
+.card > img {
+    margin-top: 3rem;
+    place-self: end;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.25rem;
+    background-color: var(--_line-color);
+    top: 0;
+    left: 0;
+}
+.card--supervisor {
+    --_line-color: var(--cyan, cyan);
+}
+.card--teambuilder {
+    --_line-color: var(--red, red);
+}
+.card--karma {
+    --_line-color: var(--orange, orange);
+}
+.card--calculator {
+    --_line-color: var(--blue, blue);
+}
+.card > * {
+    grid-column: span 2;
+}
+@container (min-width: 50rem) {
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .grid > * {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .row-middle {
+        grid-row: 2 / 4;
+    }
+    .last-col {
+        grid-column: 5 / 7;
+    }
+}
